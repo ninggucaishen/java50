@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class myPractice24 {
     public static void main(String[] args) {
-        System.out.println("请输入一个5位以内的正整数：");
+        System.out.print("请输入一个5位以内的正整数：");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         if (n < 0 || n > 100000) {
@@ -30,12 +30,13 @@ public class myPractice24 {
     }
 
     private static void reversePrint(int n) {
-        System.out.println("逆序输出：");
+        System.out.print("逆序输出：");
         while (n > 0) {
             if (n % 10 != 0)
-                System.out.print(n % 10 + " ");
+                System.out.print(n % 10);
             n /= 10;
         }
+        System.out.println();
     }
 
 }
