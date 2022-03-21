@@ -1,4 +1,4 @@
-package cc.test.cc.heikafei;
+package cc.test;
 
 /**
  * 多线程实现同步售票
