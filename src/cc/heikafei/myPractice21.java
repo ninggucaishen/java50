@@ -10,7 +10,7 @@ public class myPractice21 {
         for (int i = 0; i < 20; i++) {
             sum += factorial(i + 1);
         }
-        System.out.println(sum);
+        System.out.println("该阶乘前20项之和为：" + sum);
     }
 
     private static long factorial(int n) {
