@@ -17,6 +17,6 @@ public class myPractice22 {
             return 10;
         else
             return getAge(m - 1, n) + n;
-
     }
+
 }
