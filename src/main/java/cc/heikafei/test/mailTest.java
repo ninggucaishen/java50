@@ -26,33 +26,6 @@ public class mailTest {
     private static String receiveMailAccount = "******@qq.com";
 
     public static void main(String[] args) throws UnsupportedEncodingException, MessagingException {
-        /*String smtp = "smtp.qq.com";
-        String username = "1471723394@qq.com";
-        String password = "$94186Fa.";
-        Properties props = new Properties();
-        props.put("mail.smtp.host", smtp);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        });
-
-        session.setDebug(true);
-
-        MimeMessage message = new MimeMessage(session);
-
-        message.setFrom(new InternetAddress("1471723394@qq.com"));
-
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("heikafei.cc@gmail.com"));
-
-        message.setSubject("hello,ning,this is my first e-mail via java!", "UTF-8");
-
-        Transport.send(message);*/
 
         //1.创建参数配置，用于连接邮箱服务器的参数配置
         Properties props = new Properties();
