@@ -11,8 +11,17 @@ public class enumTest {
         } else {
             System.out.println("work at office!");
         }
+
+        String name = Weekday.SUN.name();
+        System.out.println(name);       //SUN
+
+        int ordinal = Weekday.FRI.ordinal();
+        System.out.println(ordinal);        //5
     }
 
+    /**
+     * enum常量自身带有类型信息，编译器会自行检查出类型错误
+     */
     enum Weekday {
         SUN, MON, TUE, WED, THU, FRI, SAT,
     }
