@@ -18,14 +18,21 @@ public class ThreadTest {
         myCallable.call();*/
 
         //下面这种方式不会竞争，会按照顺序输出
-        MyThread myThread = new MyThread();
+        /*MyThread myThread = new MyThread();
         myThread.start();
 
         MyRunnable myRunnable = new MyRunnable();
         myRunnable.run();
 
         MyCallable myCallable = new MyCallable();
-        myCallable.call();
+        myCallable.call();*/
+
+        MyThread myThread = new MyThread();
+        myThread.start();
+        Thread.sleep(1000);     //暂停1000ms，即1s
+        myThread.interrupt();       //中断myThread线程
+        myThread.join();        //等待myThread线程结束
+        System.out.println("end");
 
     }
 
