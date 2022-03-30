@@ -1,7 +1,10 @@
 package cc.heikafei.test;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -58,6 +61,12 @@ public class LambdaStreamTest {
         //count
         Stream<String> stream9 = Stream.of("ab", "bcd", "ef", "g");
         System.out.println(stream9.count());
+
+        //peek
+        //建立一个通道，在这个通道中对 Stream 的每个元素执行对应的操作，对应 Consumer<T>的函数式接口，这是一个消费者函数式接口
+        Stream<String> stream10 = Stream.of("a", "b", "c", "d", "f");
+        List<String> list = stream10.peek(n -> System.out.print(n.toUpperCase())).collect(Collectors.toList());
+        System.out.println(list);
 
     }
 }
