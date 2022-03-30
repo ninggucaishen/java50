@@ -68,5 +68,33 @@ public class LambdaStreamTest {
         List<String> list = stream10.peek(n -> System.out.print(n.toUpperCase())).collect(Collectors.toList());
         System.out.println(list);
 
+        //forEach
+        //和 peek 方法类似，都接收一个消费者函数式接口，可以对每个元素进行对应的操作，
+        // 但是和 peek 不同的是，forEach 执行之后，这个 Stream 就真的被消费掉了，之后这个 Stream 流就没有了，不可以再对它进行后续操作了，
+        // 而 peek操作完之后，还是一个可操作的 Stream 对象。
+        Stream<String> stream11 = Stream.of("a", "b", "c", "d");
+        stream11.forEach(n -> System.out.print(n.toUpperCase(Locale.ROOT)));
+
+        System.out.println();
+
+        //limit
+        //获取前 n 条数据，类似于 MySQL 的limit，只不过只能接收一个参数，就是数据条数。
+        Stream<String> stream12 = Stream.of("hello", "ning", "welcome", "to", "changsha");
+        stream12.limit(2).forEach(s -> System.out.print(s));
+
+        System.out.println();
+
+        //skip
+        //跳过前 n 条数据
+        Stream<String> stream13 = Stream.of("hello", "ning", "welcome", "to", "changsha");
+        stream13.skip(2).forEach(s -> System.out.print(s));
+
+        System.out.println();
+
+        //distinct
+        //元素去重
+        Stream<String> stream14 = Stream.of("hello", "ning", "and", "hello", "kangkang");
+        stream14.distinct().forEach(s -> System.out.print(s));
+
     }
 }
