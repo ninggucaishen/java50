@@ -21,6 +21,8 @@ public class LSTest {
         mapGetKey();
 
         mapGetValue();
+
+        collectionTest();
     }
 
     //筛选符合条件的结果
@@ -75,6 +77,22 @@ public class LSTest {
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
         System.out.println(listAges);
+    }
+
+    private static void collectionTest() {
+        List<String> list = Arrays.asList("Alice", "Bob", "Jack", "Tom");
+        List<String> duplicateList = Arrays.asList("Alice", "Jack", "Jack", "Tom");
+
+        /*List<String> collect = list.stream().collect(Collectors.toList());
+        System.out.println(collect);
+
+        List<String> collect1 = duplicateList.stream().collect(Collectors.toList());
+        System.out.println(collect1);*/
+
+        //筛选重复的字段，输出不重复的字段,待改进
+        List<String> collect = duplicateList.parallelStream().collect(Collectors.toList());
+        System.out.println(collect);
+
     }
 
 }
