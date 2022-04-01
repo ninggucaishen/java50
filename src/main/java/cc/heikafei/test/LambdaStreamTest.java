@@ -96,5 +96,29 @@ public class LambdaStreamTest {
         Stream<String> stream14 = Stream.of("hello", "ning", "and", "hello", "kangkang");
         stream14.distinct().forEach(s -> System.out.print(s));
 
+        System.out.println();
+
+        //sorted
+        // 有两个重载，一个无参数，另外一个有个 Comparator类型的参数。
+        //无参类型的按照自然顺序进行排序，只适合比较单纯的元素，比如数字、字母等
+        sorted();
+
+        System.out.println();
+
+        //sorted()
+        //有参数的需要自定义排序规则，
+        // 例如下面这个方法，按照第二个字母的大小顺序排序
+        sortedWithComparator();
     }
+
+    private static void sorted() {
+        Stream<String> a = Stream.of("a", "c", "b");
+        a.sorted().forEach(e -> System.out.print(e + " "));
+    }
+
+    private static void sortedWithComparator() {
+        Stream<String> stream = Stream.of("a3", "a1", "c3", "h4", "f4", "b2", "e8");
+        stream.sorted((x, y) -> Integer.parseInt(x.substring(1)) > Integer.parseInt(y.substring(1)) ? 1 : -1).forEach(n -> System.out.print(n + " "));
+    }
+
 }
