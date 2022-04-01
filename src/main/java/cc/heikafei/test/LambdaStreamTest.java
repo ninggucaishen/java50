@@ -117,6 +117,9 @@ public class LambdaStreamTest {
         //用于条件筛选过滤，筛选出符合条件的数据
         filter();
 
+        //map
+        TestList();
+
     }
 
     private static void sorted() {
@@ -164,11 +167,29 @@ public class LambdaStreamTest {
         private String address;
     }
 
+    //filter
     private static void filter() {
         List<User> users = getUserData();
         Stream<User> stream = users.stream();
         //删选性别为male、年龄小于30的小弟
         stream.filter(user -> user.getGender().equals("male") && user.getAge() < 30).forEach(n -> System.out.println(n));
+    }
+
+    private static void TestList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+
+        //map对Stream中的值再加工，返回新的Stream值
+        Stream<String> stream = list.stream().map(element -> convertElement(element));
+        stream.forEach(n-> System.out.println(n));
+    }
+
+    private static String convertElement(String element) {
+        return element + "abc";
     }
 
 }
