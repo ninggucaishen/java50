@@ -1,6 +1,8 @@
 package cc.heikafei.test;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -133,33 +135,40 @@ public class LambdaStreamTest {
         Random random = new Random();
         List<User> users = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
-            User user = new User();
+            //封装方式一：手动封装
+            /*User user = new User();
             user.setId(i);
             user.setName(String.format("ning's %s 号小弟", i));
-            user.setAge(random.nextInt(100));
+            user.setAge(random.nextInt(50));
             user.setGender("male");
             user.setPhone("13378762341");
             user.setAddress("None");
+            users.add(user);*/
+
+            //封装方式二：采用（全参）构造方法封装
+            User user = new User(i,String.format("ning's %s 号小弟",i),random.nextInt(50),"male",null,"None");
             users.add(user);
         }
         return users;
-
     }
 
     @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     private static class User {
-        Integer id;
-        String name;
-        Integer age;
-        String gender;
-        String phone;
-        String address;
+        private Integer id;
+        private String name;
+        private Integer age;
+        private String gender;
+        private String phone;
+        private String address;
     }
 
     private static void filter() {
         List<User> users = getUserData();
         Stream<User> stream = users.stream();
-        stream.filter(user -> user.getGender().equals("male") && user.getAge() < 30).forEach(n -> System.out.print(n + " "));
+        //删选性别为male、年龄小于30的小弟
+        stream.filter(user -> user.getGender().equals("male") && user.getAge() < 30).forEach(n -> System.out.println(n));
     }
 
 }
