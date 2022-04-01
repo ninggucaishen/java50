@@ -1,9 +1,8 @@
 package cc.heikafei.test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import lombok.Data;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -109,6 +108,13 @@ public class LambdaStreamTest {
         //有参数的需要自定义排序规则，
         // 例如下面这个方法，按照第二个字母的大小顺序排序
         sortedWithComparator();
+
+        System.out.println();
+
+        //filter
+        //用于条件筛选过滤，筛选出符合条件的数据
+        filter();
+
     }
 
     private static void sorted() {
@@ -119,6 +125,41 @@ public class LambdaStreamTest {
     private static void sortedWithComparator() {
         Stream<String> stream = Stream.of("a3", "a1", "c3", "h4", "f4", "b2", "e8");
         stream.sorted((x, y) -> Integer.parseInt(x.substring(1)) > Integer.parseInt(y.substring(1)) ? 1 : -1).forEach(n -> System.out.print(n + " "));
+    }
+
+
+    //模拟用户数据
+    private static List<User> getUserData() {
+        Random random = new Random();
+        List<User> users = new ArrayList<>();
+        for (int i = 1; i < 11; i++) {
+            User user = new User();
+            user.setId(i);
+            user.setName(String.format("ning's %s 号小弟", i));
+            user.setAge(random.nextInt(100));
+            user.setGender("male");
+            user.setPhone("13378762341");
+            user.setAddress("None");
+            users.add(user);
+        }
+        return users;
+
+    }
+
+    @Data
+    private static class User {
+        Integer id;
+        String name;
+        Integer age;
+        String gender;
+        String phone;
+        String address;
+    }
+
+    private static void filter() {
+        List<User> users = getUserData();
+        Stream<User> stream = users.stream();
+        stream.filter(user -> user.getGender().equals("male") && user.getAge() < 30).forEach(n -> System.out.print(n + " "));
     }
 
 }
