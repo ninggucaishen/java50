@@ -18,6 +18,8 @@ public class LSTest {
 
         filter();
 
+        filter2();
+
         mapGetKey();
 
         mapGetValue();
@@ -35,6 +37,14 @@ public class LSTest {
         System.out.println();
         oddIntegers.forEach(n -> System.out.print(n + " "));
         System.out.println();
+    }
+
+    //filter2
+    private static void filter2() {
+        List<String> list = Arrays.asList("Alice", "Bob", "Ning", "Tom");
+        Stream<String> stream = list.stream()
+                .filter(e -> e.contains("n"));
+        stream.forEach(System.out::println);
     }
 
     //测试JavaBean类
