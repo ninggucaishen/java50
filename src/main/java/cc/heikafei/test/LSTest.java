@@ -29,6 +29,19 @@ public class LSTest {
         distinctTest();
 
         mapTest();
+
+        flatMapTest();
+    }
+
+    private static void flatMapTest() {
+        List<String> words = Arrays.asList("hello", "ning");
+        words.stream()
+                .map(s->s.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()       //不加distinct()输出helloning，加distinct()输出helonig
+                .collect(Collectors.toList())
+                .forEach(e-> System.out.print(e));
+        System.out.println();
     }
 
     private static void mapTest() {
