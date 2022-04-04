@@ -25,6 +25,16 @@ public class LSTest {
         mapGetValue();
 
         collectionTest();
+
+        distinctTest();
+    }
+
+    private static void distinctTest() {
+        List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 2, 1, 3, 4);
+        numbers.stream()
+                .filter(integer -> integer % 2 == 0)
+                .distinct()
+                .forEach(System.out::println);
     }
 
     //筛选符合条件的结果

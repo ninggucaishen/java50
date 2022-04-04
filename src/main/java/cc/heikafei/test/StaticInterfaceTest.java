@@ -17,11 +17,11 @@ import java.util.Comparator;
 public class StaticInterfaceTest {
     public static void main(String[] args) {
 
-//        StaticInterfaceTest.method();
+        StaticInterfaceTest.method();
 
         //测试默认接口
-        /*TestObject object = new TestObject();
-        object.sameMethod(); */       //Invoke Object method!
+        TestObject object = new TestObject();
+        object.sameMethod();        //Invoke Object method!
 
         testMethod();
 
