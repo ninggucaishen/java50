@@ -27,6 +27,28 @@ public class LSTest {
         collectionTest();
 
         distinctTest();
+
+        mapTest();
+    }
+
+    private static void mapTest() {
+        List<Words> list = Arrays.asList(
+                new Words("hello"),
+                new Words("ning"),
+                new Words("welcome to Dashu")
+        );
+
+        list.stream()
+                .map(Words::getWords)
+//                .map(String::length)
+                .forEach(e -> System.out.print(e + " "));
+        System.out.println();
+    }
+
+    @Data
+    @AllArgsConstructor
+    private static class Words {
+        private String words;
     }
 
     private static void distinctTest() {
@@ -34,7 +56,8 @@ public class LSTest {
         numbers.stream()
                 .filter(integer -> integer % 2 == 0)
                 .distinct()
-                .forEach(System.out::println);
+                .forEach(e -> System.out.print(e + " "));
+        System.out.println();
     }
 
     //筛选符合条件的结果
