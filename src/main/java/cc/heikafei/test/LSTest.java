@@ -31,6 +31,20 @@ public class LSTest {
         mapTest();
 
         flatMapTest();
+
+        max_minTest();
+
+    }
+
+    private static void max_minTest() {
+        List<Integer> list = Arrays.asList(4, 2, 6, 9, 1, 5);
+        Optional<Integer> max = list.stream()
+                .reduce(Integer::max);
+        System.out.println(max.get());
+
+        Optional<Integer> min = list.stream()
+                .reduce(Integer::min);
+        System.out.println(min.get());
     }
 
     private static void flatMapTest() {
