@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
@@ -34,6 +35,16 @@ public class LSTest {
 
         max_minTest();
 
+        rangeTest();
+
+    }
+
+    private static void rangeTest() {
+        IntStream.range(1, 10)
+                .peek(e -> System.out.print("A" + e))
+                .limit(3)
+                .peek(e -> System.out.print("B" + e))
+                .forEach(e -> System.out.print("C" + e + "\n"));
     }
 
     private static void max_minTest() {
@@ -45,16 +56,18 @@ public class LSTest {
         Optional<Integer> min = list.stream()
                 .reduce(Integer::min);
         System.out.println(min.get());
+
+        System.out.println();
     }
 
     private static void flatMapTest() {
         List<String> words = Arrays.asList("hello", "ning");
         words.stream()
-                .map(s->s.split(""))
+                .map(s -> s.split(""))
                 .flatMap(Arrays::stream)
                 .distinct()       //不加distinct()输出helloning，加distinct()输出helonig
                 .collect(Collectors.toList())
-                .forEach(e-> System.out.print(e));
+                .forEach(e -> System.out.print(e));
         System.out.println();
     }
 
