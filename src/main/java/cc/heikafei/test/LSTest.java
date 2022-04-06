@@ -35,8 +35,20 @@ public class LSTest {
 
         max_minTest();
 
+        //中间操作和终止操作测试，包括rangeTest2()
         rangeTest();
 
+        rangeTest2();
+
+    }
+
+    private static void rangeTest2() {
+        IntStream.range(1, 10)
+                .peek(e -> System.out.print("\nA" + e))
+                .skip(6)
+                .peek(e -> System.out.print("B" + e))
+                .forEach(e -> System.out.print("C" + e));
+        System.out.println();
     }
 
     private static void rangeTest() {
@@ -45,6 +57,7 @@ public class LSTest {
                 .limit(3)
                 .peek(e -> System.out.print("B" + e))
                 .forEach(e -> System.out.print("C" + e + "\n"));
+        System.out.println();
     }
 
     private static void max_minTest() {
