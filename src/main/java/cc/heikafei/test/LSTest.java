@@ -43,6 +43,7 @@ public class LSTest {
         //Stream PipleLines 测试
         test();
 
+        //线程中使用lambda表达式
         new Thread(()->{
             System.out.println("hello");
             System.out.println("ning");
@@ -51,11 +52,10 @@ public class LSTest {
     }
 
     private static void test() {
-        Arrays.asList("", "b2", "c3")
+        Arrays.asList(" ", "b2", "c3")
                 .stream()       //创建流
                 .findFirst()        //找到第一个元素的位置
                 .ifPresent(System.out::println);        //第一个位置没有元素，则不输出
-        System.out.println();
     }
 
     private static void rangeTest2() {
