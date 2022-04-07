@@ -43,6 +43,11 @@ public class LSTest {
         //Stream PipleLines 测试
         test();
 
+        new Thread(()->{
+            System.out.println("hello");
+            System.out.println("ning");
+        }).start();
+
     }
 
     private static void test() {
