@@ -55,6 +55,20 @@ public class LSTest {
         //reduce操作可以实现从一组元素中生成一个值
         reduceTest();
 
+        collectionTest2();
+
+    }
+
+    private static void collectionTest2() {
+        Stream<String> stream = Stream.of("I", "love", "you", "too");
+        //方法一
+//        ArrayList<Object> list = stream.collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        //方法二
+//        List<String> list = stream.collect(Collectors.toList());
+//        System.out.println(list);       //[I, love, you, too]
+        
+        Set<String> set = stream.collect(Collectors.toSet());
+        System.out.println(set);
     }
 
     private static void reduceTest() {
