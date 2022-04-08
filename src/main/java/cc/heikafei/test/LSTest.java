@@ -61,12 +61,13 @@ public class LSTest {
 
     private static void collectionTest2() {
         Stream<String> stream = Stream.of("I", "love", "you", "too");
-        //方法一
+        //方法一：将Stream转成List
 //        ArrayList<Object> list = stream.collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
-        //方法二
+        //方法二：将Stream转成List
 //        List<String> list = stream.collect(Collectors.toList());
 //        System.out.println(list);       //[I, love, you, too]
-        
+
+        //将Stream转成Set
         Set<String> set = stream.collect(Collectors.toSet());
         System.out.println(set);
     }
