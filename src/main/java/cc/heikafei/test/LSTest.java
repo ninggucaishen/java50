@@ -49,6 +49,25 @@ public class LSTest {
             System.out.println("ning");
         }).start();
 
+        ComsumerInterface<String> comsumer = str -> System.out.println(str);
+        System.out.println(comsumer);
+
+        //reduce操作可以实现从一组元素中生成一个值
+        reduceTest();
+
+    }
+
+    private static void reduceTest() {
+        //找出最长的单词
+        Stream<String> stream = Stream.of("I", "love", "you", "too");
+        Optional<String> longest = stream.reduce((s1, s2) -> s1.length() >= s2.length() ? s1 : s2);
+        System.out.println(longest.get());
+    }
+
+    //自定义函数接口
+    @FunctionalInterface
+    private interface ComsumerInterface<T>{
+        void accept(T t);
     }
 
     private static void test() {
