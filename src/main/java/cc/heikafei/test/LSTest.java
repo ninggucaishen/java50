@@ -44,7 +44,7 @@ public class LSTest {
         test();
 
         //线程中使用lambda表达式
-        new Thread(()->{
+        new Thread(() -> {
             System.out.println("hello");
             System.out.println("ning");
         }).start();
@@ -57,6 +57,17 @@ public class LSTest {
 
         collectionTest2();
 
+        //forEach 循环遍历，筛选符合条件的结果
+        forEachTest();
+
+    }
+
+    private static void forEachTest() {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        list.forEach(e -> {
+            if (e.length() > 3)
+                System.out.println(e);
+        });
     }
 
     private static void collectionTest2() {
@@ -81,7 +92,7 @@ public class LSTest {
 
     //自定义函数接口
     @FunctionalInterface
-    private interface ComsumerInterface<T>{
+    private interface ComsumerInterface<T> {
         void accept(T t);
     }
 
