@@ -66,6 +66,34 @@ public class LSTest {
         //使用removeIf()结合Lambda表达式 实现 删除列表元素
         removeIf();
 
+        //使用下标实现元素替换
+        replace();
+
+        //使用lambda表达式实现元素替换
+        replaceAll();
+
+    }
+
+    private static void replaceAll() {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        list.replaceAll(e -> {
+            if (e.length() > 3) {
+                return e.toUpperCase(Locale.ROOT);
+            }
+            return e;
+        });
+        System.out.println(list);
+    }
+
+    private static void replace() {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        for (int i = 0; i < list.size(); i++) {
+            String str = list.get(i);
+            if (str.length() > 3) {
+                list.set(i, str.toUpperCase(Locale.ROOT));
+            }
+        }
+        System.out.println(list);
     }
 
     private static void removeIf() {
