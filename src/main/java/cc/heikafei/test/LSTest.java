@@ -60,6 +60,29 @@ public class LSTest {
         //forEach 循环遍历，筛选符合条件的结果
         forEachTest();
 
+        //使用迭代器删除列表元素
+        remove();
+
+        //使用removeIf()结合Lambda表达式 实现 删除列表元素
+        removeIf();
+
+    }
+
+    private static void removeIf() {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        list.removeIf(e -> e.length() > 3);
+        System.out.println(list);
+    }
+
+    private static void remove() {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().length() > 3) {
+                iterator.remove();
+            }
+        }
+        System.out.println(list);
     }
 
     private static void forEachTest() {
