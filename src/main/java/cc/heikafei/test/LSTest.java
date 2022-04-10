@@ -77,7 +77,7 @@ public class LSTest {
     private static void replaceAll() {
         ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
         list.replaceAll(e -> {
-            if (e.length() > 3) {
+            if (e.length() >= 3) {
                 return e.toUpperCase(Locale.ROOT);
             }
             return e;
