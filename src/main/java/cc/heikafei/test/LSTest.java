@@ -72,6 +72,32 @@ public class LSTest {
         //使用lambda表达式实现元素替换
         replaceAll();
 
+        //Java8之前迭代Map
+        map();
+
+        //使用forEach()结合Lambda表达式迭代Map
+        mapForEach();
+
+    }
+
+    private static void mapForEach() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "zs");
+        map.put(2, "ls");
+        map.put(3, "wu");
+        map.put(4, "zl");
+        map.forEach((k, v) -> System.out.println(k + "=" + v));
+    }
+
+    private static void map() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        map.put(3, "three");
+        for (Map.Entry<Integer, String> entry :
+                map.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
     }
 
     private static void replaceAll() {
