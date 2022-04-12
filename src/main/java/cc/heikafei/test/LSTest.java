@@ -78,6 +78,24 @@ public class LSTest {
         //使用forEach()结合Lambda表达式迭代Map
         mapForEach();
 
+        // 查询Map中指定的值，不存在时使用默认值
+        getOrDefault();
+
+    }
+
+    private static void getOrDefault() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "zhangsan");
+        map.put(2, "lisi");
+        map.put(3, "wangwu");
+        //java8之前做法
+        if (map.containsKey(4)) {
+            System.out.println(map.get(4));
+        } else {
+            System.out.println("No value!");
+        }
+        //java8之后做法
+        System.out.println(map.getOrDefault(5, "No value"));
     }
 
     private static void mapForEach() {
