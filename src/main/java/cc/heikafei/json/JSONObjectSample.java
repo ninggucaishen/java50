@@ -1,4 +1,4 @@
-package cc.heikafei.JSONObject;
+package cc.heikafei.json;
 
 import org.json.JSONObject;
 
