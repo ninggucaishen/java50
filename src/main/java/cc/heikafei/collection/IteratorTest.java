@@ -22,7 +22,16 @@ public class IteratorTest {
         //}
 
         //迭代器自带的remove()
-        for (Iterator iter = list.iterator(); iter.hasNext(); ) {
+        //写法一
+        //for (Iterator iter = list.iterator(); iter.hasNext(); ) {
+        //    if ("3".equals(iter.next())) {
+        //        iter.remove();
+        //    }
+        //}
+
+        //写法二
+        Iterator iter = list.iterator();
+        while (iter.hasNext()) {
             if ("3".equals(iter.next())) {
                 iter.remove();
             }
