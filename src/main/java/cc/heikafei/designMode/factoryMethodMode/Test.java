@@ -14,7 +14,7 @@ public class Test {
         reader2.read();
 
         //读取gif
-        GifReaderFactory gifReaderFactory = new GifReaderFactory();
+        ReaderFactory gifReaderFactory = new GifReaderFactory();
         Reader reader3 = gifReaderFactory.getReader();
         reader3.read();
     }
