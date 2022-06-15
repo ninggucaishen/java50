@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>blockChain</title>
+    <!-- <link rel="stylesheet" href="./layui/css/layui.css"> -->
+    <link rel="sss" href="./layui/css/layui.css">
+</head>
+
+<body>
+
+    <!-- 你的 HTML 代码 -->
+
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.use(['layer', 'form'], function() {
+            var layer = layui.layer,
+                form = layui.form;
+            layer.msg('Hello world');
+        });
+
+        layui.config({
+            base: '/res/js/modules/' //你存放新模块的目录，注意，不是 layui 的模块目录
+        }).use('index'); //加载入口
+    </script>
+</body>
+
+</html>
