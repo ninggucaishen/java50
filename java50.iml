@@ -47,5 +47,8 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.80" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.8.3" level="project" />
+    <orderEntry type="library" name="Maven: com.vdurmont:emoji-java:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ansj:ansj_seg:5.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.nlpcn:nlp-lang:1.7.2" level="project" />
   </component>
 </module>
