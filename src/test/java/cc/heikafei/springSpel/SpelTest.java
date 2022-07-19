@@ -1,22 +1,28 @@
 package cc.heikafei.springSpel;
 
+import cc.heikafei.bean.Employee;
+import cc.heikafei.bean.Person;
 import cc.heikafei.nettyTest.MyClient;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.expression.BeanFactoryResolver;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.ParserContext;
+import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
+import javax.annotation.Resource;
+import javax.swing.*;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName SpelTest
@@ -352,5 +358,104 @@ public class SpelTest {
         System.out.println(result);
         System.out.println(list);   //[1, 4]
     }
+
+    @Test
+    public void test9() {
+
+        ExpressionParser parser = new SpelExpressionParser();
+
+        //1.测试集合或数组
+        List<Integer> list = new ArrayList<>();
+        list.add(4);
+        list.add(5);
+
+        EvaluationContext context = new StandardEvaluationContext();
+        context.setVariable("list", list);
+        Collection<Integer> result = parser.parseExpression("#list.![#this+1]").getValue(context, Collection.class);
+        result.forEach(System.out::println);
+
+        //2.测试字典
+        Map<String, Integer> map = new HashMap<>();
+        map.put("a", 1);
+        map.put("b", 2);
+        EvaluationContext context1 = new StandardEvaluationContext();
+        context1.setVariable("map", map);
+        List<Integer> result1 = parser.parseExpression("#map.![value+1]").getValue(context1, List.class);
+        result1.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void test10() {
+        ExpressionParser parser = new SpelExpressionParser();
+
+        //1.测试集合或数组
+        List<Integer> list = new ArrayList<>();
+        list.add(7);
+        list.add(1);
+        list.add(4);
+        list.add(5);
+
+        EvaluationContext context = new StandardEvaluationContext();
+        context.setVariable("list", list);
+        Collection<Integer> result = parser.parseExpression("#list.?[#this>4]").getValue(context, Collection.class);
+        result.forEach(System.out::println);
+
+        //2.测试字典
+        Map<String, Integer> map = new HashMap<>();
+        map.put("a", 1);
+        map.put("b", 2);
+        map.put("c", 3);
+        EvaluationContext context2 = new StandardEvaluationContext();
+        context2.setVariable("map", map);
+        Map<String, Integer> result2 = parser.parseExpression("#map.?[key!='a']").getValue(context2, Map.class);
+        result2.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+        System.out.println("------------");
+        List<Integer> result3 = parser.parseExpression("#map.?[key!='a'].![value+1]").getValue(context2, List.class);
+        result3.forEach(System.out::println);
+    }
+
+    @Test
+    public void test11() {
+
+        //创建解析器
+        SpelExpressionParser parser = new SpelExpressionParser();
+
+        //创建解析器上下文
+        ParserContext context = new TemplateParserContext("%{", "}");
+        Expression expression = parser.parseExpression("你好：%{#name}, 我们正在学习：%{#lesson}", context);
+
+        //创建表达式计算上下文
+        EvaluationContext evaluationContext = new StandardEvaluationContext();
+        evaluationContext.setVariable("name", "ning");
+        evaluationContext.setVariable("lesson", "spring spelExpression");
+
+        //获取值
+        String value = expression.getValue(evaluationContext, String.class);
+        System.out.println(value);
+
+    }
+
+    @Test
+    public void testSpELXmlConfig() {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("springSpEL.xml");
+
+        Person person = (Person) context.getBean("person");
+
+        System.out.println(person.getBookName());
+
+        System.out.println(person.getBook().getPages());
+    }
+
+    //@Test
+    //@ExtendWith(SpringExtension.class)
+    //public void testSpELPropConfig() {
+    //
+    //    @Resource
+    //    Employee employee;
+    //}
 
 }
