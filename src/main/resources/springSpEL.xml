@@ -9,6 +9,7 @@
 
     <!-- more bean definitions for data access objects go here -->
 
+    <!-- 方式一 -->
     <!--<bean id="book" class="cc.heikafei.bean.Book">
         <property name="name" value="Effective Java" />
         <property name="pages" value="300"/>
@@ -19,6 +20,7 @@
         <property name="bookName" value="#{book.name}"/>
     </bean>-->
 
+    <!-- 方式二 -->
     <context:component-scan base-package="cc.heikafei.bean" />
 
 </beans>

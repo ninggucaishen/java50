@@ -6,6 +6,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @ClassName MyClient
@@ -14,9 +15,12 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @Date 2022/7/13 17:15
  * @Version 1.0
  */
+
+@Slf4j
 public class MyClient {
 
     public static void main(String[] args) throws InterruptedException {
+
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
 
         try {
@@ -40,8 +44,12 @@ public class MyClient {
             channelFuture.channel().closeFuture().sync();
 
         } finally {
-            //关闭线程组
-            eventExecutors.shutdownGracefully();
+            try {
+                //关闭线程组
+                eventExecutors.shutdownGracefully();
+            } catch (Exception e) {
+                log.error("error:" + e.getMessage());
+            }
         }
     }
 }
