@@ -17,9 +17,9 @@ public class Test {
 
     private static String getClientIpAddress(String request) {
 
-        String ip = request.substring(1);
+        String ip = request.toLowerCase();
         if (StringUtils.isBlank(ip) || "unknow".equalsIgnoreCase(ip)) {
-            ip = request.substring(1);
+            ip = request + "hello";
         }
         if (StringUtils.isBlank(ip) || "unknow".equalsIgnoreCase(ip)) {
             ip = request.substring(3);
