@@ -22,7 +22,8 @@ public class RandomTest {
         String currentTime = new SimpleDateFormat("yyyyMMddHH").format(date);
         System.out.println(currentTime);
         System.out.println(currentTime + getRandom(4));
-        System.out.println((Timestamp) date);
+        //System.out.println((Timestamp) date);
+        System.out.println(new Timestamp(System.currentTimeMillis()));
     }
 
     private static String getRandom(int len) {
