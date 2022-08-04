@@ -1,11 +1,8 @@
 package cc.heikafei.springSpel;
 
-import cc.heikafei.bean.Employee;
-import cc.heikafei.bean.Person;
 import cc.heikafei.nettyTest.MyClient;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.expression.BeanFactoryResolver;
@@ -18,8 +15,6 @@ import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
-import javax.annotation.Resource;
-import javax.swing.*;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -438,17 +433,17 @@ public class SpelTest {
 
     }
 
-    @Test
-    public void testSpELXmlConfig() {
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("springSpEL.xml");
-
-        Person person = (Person) context.getBean("person");
-
-        System.out.println(person.getBookName());
-
-        System.out.println(person.getBook().getPages());
-    }
+    //@Test
+    //public void testSpELXmlConfig() {
+    //
+    //    ApplicationContext context = new ClassPathXmlApplicationContext("springSpEL.xml");
+    //
+    //    Person person = (Person) context.getBean("person");
+    //
+    //    System.out.println(person.getBookName());
+    //
+    //    System.out.println(person.getBook().getPages());
+    //}
 
     //@Test
     //@ExtendWith(SpringExtension.class)
