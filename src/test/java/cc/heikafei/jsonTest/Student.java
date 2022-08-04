@@ -25,7 +25,7 @@ public class Student {
     @JSONField(name = "AGE")
     private int age;
 
-    @JSONField(name = "BIRTHDAY")
+    @JSONField(name = "BIRTHDAY", format = "yyyy-MM-dd")
     private Date birthday;
 
 }
