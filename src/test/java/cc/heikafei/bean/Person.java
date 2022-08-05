@@ -1,5 +1,9 @@
 package cc.heikafei.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -9,9 +13,10 @@ import java.io.Serializable;
  * @Date 2022/8/4 15:11
  * @Version 1.0
  */
+
 public class Person implements Serializable {
 
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = -8612729177673985262L;
 
     private String name;
     private Integer age;
