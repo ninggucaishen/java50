@@ -59,4 +59,5 @@ public class philosopherEat {
             Thread.sleep((long) (Math.random()*10));
         }
     }
+
 }

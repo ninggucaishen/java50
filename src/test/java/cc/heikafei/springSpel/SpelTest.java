@@ -18,6 +18,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @ClassName SpelTest
@@ -432,6 +433,27 @@ public class SpelTest {
         System.out.println(value);
 
     }
+
+    @Test
+    public void test12() {
+        SpelExpressionParser parser = new SpelExpressionParser();
+
+        TemplateParserContext context = new TemplateParserContext("%{", "}");
+        Expression expression = parser.parseExpression("订单【%{#orderL1Id}】的【%{#taskTemplateName}】环节已发生故障，请尽快处理！",context);
+
+        EvaluationContext evaluationContext = new StandardEvaluationContext();
+        evaluationContext.setVariable("orderL1Id", "12312313");
+        evaluationContext.setVariable("taskTemplateName", "信通院");
+
+        String value = expression.getValue(evaluationContext, String.class);
+        System.out.println(value);
+    }
+
+    @Test
+    public void test13() {
+
+    }
+
 
     //@Test
     //public void testSpELXmlConfig() {
